@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\packages\local\EntityFramework\build\EntityFramework.props" Condition="Exists('..\..\..\packages\local\EntityFramework\build\EntityFramework.props')" Label="Paket" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -86,6 +87,22 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') Or ($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))">
+      <PropertyGroup>
+        <__paket__NETStandard_Library_targets>netstandard2.0\NETStandard.Library</__paket__NETStandard_Library_targets>
+      </PropertyGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')">
+      <PropertyGroup>
+        <__paket__EntityFramework_props>netcoreapp3.0\EntityFramework</__paket__EntityFramework_props>
+        <__paket__EntityFramework_targets>netcoreapp3.0\EntityFramework</__paket__EntityFramework_targets>
+      </PropertyGroup>
+    </When>
+  </Choose>
+  <Import Project="..\..\..\packages\local\EntityFramework\build\$(__paket__EntityFramework_props).props" Condition="Exists('..\..\..\packages\local\EntityFramework\build\$(__paket__EntityFramework_props).props')" Label="Paket" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -93,4 +110,2294 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Chessie) != 1">
+      <ItemGroup>
+        <Reference Include="Chessie">
+          <HintPath>..\..\..\packages\local\Chessie\lib\net40\Chessie.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Chessie) != 1">
+      <ItemGroup>
+        <Reference Include="Chessie">
+          <HintPath>..\..\..\packages\local\Chessie\lib\netstandard1.6\Chessie.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Cricket.Intranet.FSharp) != 1">
+      <ItemGroup>
+        <Reference Include="Cricket.Intranet.FSharp">
+          <HintPath>..\..\..\packages\local\Cricket.Intranet.FSharp\lib\net472\Cricket.Intranet.FSharp.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Cricket.ProfileProvider) != 1">
+      <ItemGroup>
+        <Reference Include="Cricket.ProfileProvider">
+          <HintPath>..\..\..\packages\local\Cricket.ProfileProvider\lib\net472\Cricket.ProfileProvider.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Cricket.Utilities) != 1">
+      <ItemGroup>
+        <Reference Include="Cricket.Utilities">
+          <HintPath>..\..\..\packages\local\Cricket.Utilities\lib\net472\Cricket.Utilities.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@CricketDAL) != 1">
+      <ItemGroup>
+        <Reference Include="CricketDAL">
+          <HintPath>..\..\..\packages\local\CricketDAL\lib\net472\CricketDAL.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@EntityFramework) != 1">
+      <ItemGroup>
+        <Reference Include="EntityFramework">
+          <HintPath>..\..\..\packages\local\EntityFramework\lib\net45\EntityFramework.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="EntityFramework.SqlServer">
+          <HintPath>..\..\..\packages\local\EntityFramework\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@EntityFramework) != 1">
+      <ItemGroup>
+        <Reference Include="EntityFramework">
+          <HintPath>..\..\..\packages\local\EntityFramework\lib\netstandard2.1\EntityFramework.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="EntityFramework.SqlServer">
+          <HintPath>..\..\..\packages\local\EntityFramework\lib\netstandard2.1\EntityFramework.SqlServer.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@ExceptionalCode) != 1">
+      <ItemGroup>
+        <Reference Include="ExceptionalCode">
+          <HintPath>..\..\..\packages\local\ExceptionalCode\lib\net472\ExceptionalCode.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.IO.Compression) != 1">
+      <ItemGroup>
+        <Reference Include="System.IO.Compression">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="Figgle">
+          <HintPath>..\..\..\packages\local\Figgle\lib\net45\Figgle.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Figgle) != 1">
+      <ItemGroup>
+        <Reference Include="Figgle">
+          <HintPath>..\..\..\packages\local\Figgle\lib\netstandard1.3\Figgle.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@FSConsole) != 1">
+      <ItemGroup>
+        <Reference Include="FSConsole">
+          <HintPath>..\..\..\packages\local\FSConsole\lib\net472\FSConsole.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') Or ($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@FSharp.Core) != 1">
+      <ItemGroup>
+        <Reference Include="FSharp.Core">
+          <HintPath>..\..\..\packages\local\FSharp.Core\lib\netstandard2.0\FSharp.Core.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') Or ($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@FSharp.Data) != 1">
+      <ItemGroup>
+        <Reference Include="FSharp.Data">
+          <HintPath>..\..\..\packages\local\FSharp.Data\lib\netstandard2.0\FSharp.Data.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') Or ($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@FSharp.Quotations.Evaluator) != 1">
+      <ItemGroup>
+        <Reference Include="FSharp.Quotations.Evaluator">
+          <HintPath>..\..\..\packages\local\FSharp.Quotations.Evaluator\lib\netstandard2.0\FSharp.Quotations.Evaluator.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@FsPickler) != 1">
+      <ItemGroup>
+        <Reference Include="FsPickler">
+          <HintPath>..\..\..\packages\local\FsPickler\lib\net45\FsPickler.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@FsPickler) != 1">
+      <ItemGroup>
+        <Reference Include="FsPickler">
+          <HintPath>..\..\..\packages\local\FsPickler\lib\netstandard2.0\FsPickler.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@FsPickler.Json) != 1">
+      <ItemGroup>
+        <Reference Include="FsPickler.Json">
+          <HintPath>..\..\..\packages\local\FsPickler.Json\lib\net45\FsPickler.Json.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@FsPickler.Json) != 1">
+      <ItemGroup>
+        <Reference Include="FsPickler.Json">
+          <HintPath>..\..\..\packages\local\FsPickler.Json\lib\netstandard2.0\FsPickler.Json.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Configuration) != 1">
+      <ItemGroup>
+        <Reference Include="System.Configuration">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="System.Web">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="log4net">
+          <HintPath>..\..\..\packages\local\log4net\lib\net45\log4net.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@log4net) != 1">
+      <ItemGroup>
+        <Reference Include="log4net">
+          <HintPath>..\..\..\packages\local\log4net\lib\netstandard2.0\log4net.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v5.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@MailKit) != 1">
+      <ItemGroup>
+        <Reference Include="MailKit">
+          <HintPath>..\..\..\packages\local\MailKit\lib\net50\MailKit.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Net.Http) != 1">
+      <ItemGroup>
+        <Reference Include="System.Net.Http">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="MailKit">
+          <HintPath>..\..\..\packages\local\MailKit\lib\netstandard2.0\MailKit.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@MailKit) != 1">
+      <ItemGroup>
+        <Reference Include="MailKit">
+          <HintPath>..\..\..\packages\local\MailKit\lib\netstandard2.1\MailKit.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.AspNet.TelemetryCorrelation) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+          <HintPath>..\..\..\packages\local\Microsoft.AspNet.TelemetryCorrelation\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.CSharp) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.CSharp">
+          <HintPath>..\..\..\packages\local\Microsoft.CSharp\ref\netstandard2.0\Microsoft.CSharp.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Win32.Registry) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Win32.Registry">
+          <HintPath>..\..\..\packages\local\Microsoft.Win32.Registry\lib\netstandard2.0\Microsoft.Win32.Registry.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Win32.Registry) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Win32.Registry">
+          <HintPath>..\..\..\packages\local\Microsoft.Win32.Registry\ref\netstandard2.0\Microsoft.Win32.Registry.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Win32.SystemEvents) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Win32.SystemEvents">
+          <HintPath>..\..\..\packages\local\Microsoft.Win32.SystemEvents\lib\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v5.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@MimeKit) != 1">
+      <ItemGroup>
+        <Reference Include="MimeKit">
+          <HintPath>..\..\..\packages\local\MimeKit\lib\net50\MimeKit.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@MimeKit) != 1">
+      <ItemGroup>
+        <Reference Include="MimeKit">
+          <HintPath>..\..\..\packages\local\MimeKit\lib\netstandard2.0\MimeKit.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@MimeKit) != 1">
+      <ItemGroup>
+        <Reference Include="MimeKit">
+          <HintPath>..\..\..\packages\local\MimeKit\lib\netstandard2.1\MimeKit.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Newtonsoft.Json) != 1">
+      <ItemGroup>
+        <Reference Include="Newtonsoft.Json">
+          <HintPath>..\..\..\packages\local\Newtonsoft.Json\lib\net45\Newtonsoft.Json.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Newtonsoft.Json) != 1">
+      <ItemGroup>
+        <Reference Include="Newtonsoft.Json">
+          <HintPath>..\..\..\packages\local\Newtonsoft.Json\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@PerFSharp) != 1">
+      <ItemGroup>
+        <Reference Include="PerFSharp">
+          <HintPath>..\..\..\packages\local\PerFSharp\lib\net472\PerFSharp.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@BouncyCastle.Crypto) != 1">
+      <ItemGroup>
+        <Reference Include="BouncyCastle.Crypto">
+          <HintPath>..\..\..\packages\local\Portable.BouncyCastle\lib\netstandard2.0\BouncyCastle.Crypto.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@RestSharp) != 1">
+      <ItemGroup>
+        <Reference Include="RestSharp">
+          <HintPath>..\..\..\packages\local\RestSharp\lib\net452\RestSharp.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@RestSharp) != 1">
+      <ItemGroup>
+        <Reference Include="RestSharp">
+          <HintPath>..\..\..\packages\local\RestSharp\lib\netstandard2.0\RestSharp.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog">
+          <HintPath>..\..\..\packages\local\Serilog\lib\net46\Serilog.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog">
+          <HintPath>..\..\..\packages\local\Serilog\lib\netstandard2.0\Serilog.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog">
+          <HintPath>..\..\..\packages\local\Serilog\lib\netstandard2.1\Serilog.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog.Formatting.Compact) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog.Formatting.Compact">
+          <HintPath>..\..\..\packages\local\Serilog.Formatting.Compact\lib\net452\Serilog.Formatting.Compact.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog.Formatting.Compact) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog.Formatting.Compact">
+          <HintPath>..\..\..\packages\local\Serilog.Formatting.Compact\lib\netstandard2.0\Serilog.Formatting.Compact.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog.Sinks.Console) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog.Sinks.Console">
+          <HintPath>..\..\..\packages\local\Serilog.Sinks.Console\lib\net45\Serilog.Sinks.Console.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v5.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog.Sinks.Console) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog.Sinks.Console">
+          <HintPath>..\..\..\packages\local\Serilog.Sinks.Console\lib\net5.0\Serilog.Sinks.Console.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog.Sinks.Console) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog.Sinks.Console">
+          <HintPath>..\..\..\packages\local\Serilog.Sinks.Console\lib\netstandard2.0\Serilog.Sinks.Console.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Net) != 1">
+      <ItemGroup>
+        <Reference Include="System.Net">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="Serilog.Sinks.Email">
+          <HintPath>..\..\..\packages\local\Serilog.Sinks.Email\lib\net47\Serilog.Sinks.Email.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog.Sinks.Email) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog.Sinks.Email">
+          <HintPath>..\..\..\packages\local\Serilog.Sinks.Email\lib\netstandard2.0\Serilog.Sinks.Email.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog.Sinks.Email) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog.Sinks.Email">
+          <HintPath>..\..\..\packages\local\Serilog.Sinks.Email\lib\netstandard2.1\Serilog.Sinks.Email.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog.Sinks.File) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog.Sinks.File">
+          <HintPath>..\..\..\packages\local\Serilog.Sinks.File\lib\net45\Serilog.Sinks.File.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v5.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog.Sinks.File) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog.Sinks.File">
+          <HintPath>..\..\..\packages\local\Serilog.Sinks.File\lib\net5.0\Serilog.Sinks.File.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog.Sinks.File) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog.Sinks.File">
+          <HintPath>..\..\..\packages\local\Serilog.Sinks.File\lib\netstandard2.0\Serilog.Sinks.File.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog.Sinks.File) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog.Sinks.File">
+          <HintPath>..\..\..\packages\local\Serilog.Sinks.File\lib\netstandard2.1\Serilog.Sinks.File.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v5.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog.Sinks.Map) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog.Sinks.Map">
+          <HintPath>..\..\..\packages\local\Serilog.Sinks.Map\lib\net5.0\Serilog.Sinks.Map.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog.Sinks.Map) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog.Sinks.Map">
+          <HintPath>..\..\..\packages\local\Serilog.Sinks.Map\lib\netstandard1.0\Serilog.Sinks.Map.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') Or ($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog.Sinks.Map) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog.Sinks.Map">
+          <HintPath>..\..\..\packages\local\Serilog.Sinks.Map\lib\netstandard2.0\Serilog.Sinks.Map.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog.Sinks.PeriodicBatching) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog.Sinks.PeriodicBatching">
+          <HintPath>..\..\..\packages\local\Serilog.Sinks.PeriodicBatching\lib\net45\Serilog.Sinks.PeriodicBatching.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Serilog.Sinks.PeriodicBatching) != 1">
+      <ItemGroup>
+        <Reference Include="Serilog.Sinks.PeriodicBatching">
+          <HintPath>..\..\..\packages\local\Serilog.Sinks.PeriodicBatching\lib\netstandard2.0\Serilog.Sinks.PeriodicBatching.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@SharedFramework) != 1">
+      <ItemGroup>
+        <Reference Include="SharedFramework">
+          <HintPath>..\..\..\packages\local\SharedFramework\lib\net472\SharedFramework.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@SharedFrameworkEntity) != 1">
+      <ItemGroup>
+        <Reference Include="SharedFrameworkEntity">
+          <HintPath>..\..\..\packages\local\SharedFrameworkEntity\lib\net472\SharedFrameworkEntity.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@SharedFrameworkInterfaces) != 1">
+      <ItemGroup>
+        <Reference Include="SharedFrameworkInterfaces">
+          <HintPath>..\..\..\packages\local\SharedFrameworkInterfaces\lib\net472\SharedFrameworkInterfaces.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@SharedFrameworkLogging) != 1">
+      <ItemGroup>
+        <Reference Include="SharedFrameworkLogging">
+          <HintPath>..\..\..\packages\local\SharedFrameworkLogging\lib\net472\SharedFrameworkLogging.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@SharedFrameworkROP) != 1">
+      <ItemGroup>
+        <Reference Include="SharedFrameworkROP">
+          <HintPath>..\..\..\packages\local\SharedFrameworkROP\lib\net472\SharedFrameworkROP.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@SharedFrameworkWeb) != 1">
+      <ItemGroup>
+        <Reference Include="SharedFrameworkWeb">
+          <HintPath>..\..\..\packages\local\SharedFrameworkWeb\lib\net472\SharedFrameworkWeb.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@SharedFSharpVanilla) != 1">
+      <ItemGroup>
+        <Reference Include="SharedFSharpVanilla">
+          <HintPath>..\..\..\packages\local\SharedFSharpVanilla\lib\net472\SharedFSharpVanilla.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@mscorlib) != 1">
+      <ItemGroup>
+        <Reference Include="mscorlib">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="System.Buffers">
+          <HintPath>..\..\..\packages\local\System.Buffers\lib\net461\System.Buffers.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Buffers) != 1">
+      <ItemGroup>
+        <Reference Include="System.Buffers">
+          <HintPath>..\..\..\packages\local\System.Buffers\lib\netstandard2.0\System.Buffers.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Buffers) != 1">
+      <ItemGroup>
+        <Reference Include="System.Buffers">
+          <HintPath>..\..\..\packages\local\System.Buffers\ref\netstandard2.0\System.Buffers.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.CodeDom) != 1">
+      <ItemGroup>
+        <Reference Include="System.CodeDom">
+          <HintPath>..\..\..\packages\local\System.CodeDom\lib\netstandard2.0\System.CodeDom.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.CodeDom) != 1">
+      <ItemGroup>
+        <Reference Include="System.CodeDom">
+          <HintPath>..\..\..\packages\local\System.CodeDom\ref\netstandard2.0\System.CodeDom.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Collections) != 1">
+      <ItemGroup>
+        <Reference Include="System.Collections">
+          <HintPath>..\..\..\packages\local\System.Collections\ref\netstandard1.3\System.Collections.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Collections.Concurrent) != 1">
+      <ItemGroup>
+        <Reference Include="System.Collections.Concurrent">
+          <HintPath>..\..\..\packages\local\System.Collections.Concurrent\lib\netstandard1.3\System.Collections.Concurrent.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Collections.Concurrent) != 1">
+      <ItemGroup>
+        <Reference Include="System.Collections.Concurrent">
+          <HintPath>..\..\..\packages\local\System.Collections.Concurrent\ref\netstandard1.3\System.Collections.Concurrent.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.ComponentModel.Annotations) != 1">
+      <ItemGroup>
+        <Reference Include="System.ComponentModel.Annotations">
+          <HintPath>..\..\..\packages\local\System.ComponentModel.Annotations\lib\netstandard2.1\System.ComponentModel.Annotations.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.ComponentModel.Annotations) != 1">
+      <ItemGroup>
+        <Reference Include="System.ComponentModel.Annotations">
+          <HintPath>..\..\..\packages\local\System.ComponentModel.Annotations\ref\netstandard2.1\System.ComponentModel.Annotations.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Configuration.ConfigurationManager) != 1">
+      <ItemGroup>
+        <Reference Include="System.Configuration.ConfigurationManager">
+          <HintPath>..\..\..\packages\local\System.Configuration.ConfigurationManager\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Configuration.ConfigurationManager) != 1">
+      <ItemGroup>
+        <Reference Include="System.Configuration.ConfigurationManager">
+          <HintPath>..\..\..\packages\local\System.Configuration.ConfigurationManager\lib\netstandard2.0\System.Configuration.ConfigurationManager.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Console) != 1">
+      <ItemGroup>
+        <Reference Include="System.Console">
+          <HintPath>..\..\..\packages\local\System.Console\lib\net46\System.Console.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Console) != 1">
+      <ItemGroup>
+        <Reference Include="System.Console">
+          <HintPath>..\..\..\packages\local\System.Console\ref\netstandard1.3\System.Console.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Data.DataSetExtensions) != 1">
+      <ItemGroup>
+        <Reference Include="System.Data.DataSetExtensions">
+          <HintPath>..\..\..\packages\local\System.Data.DataSetExtensions\ref\netstandard2.0\System.Data.DataSetExtensions.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Data.SqlClient) != 1">
+      <ItemGroup>
+        <Reference Include="System.Data.SqlClient">
+          <HintPath>..\..\..\packages\local\System.Data.SqlClient\lib\netcoreapp2.1\System.Data.SqlClient.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Data.SqlClient) != 1">
+      <ItemGroup>
+        <Reference Include="System.Data.SqlClient">
+          <HintPath>..\..\..\packages\local\System.Data.SqlClient\ref\netcoreapp2.1\System.Data.SqlClient.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Data.SqlClient) != 1">
+      <ItemGroup>
+        <Reference Include="System.Data.SqlClient">
+          <HintPath>..\..\..\packages\local\System.Data.SqlClient\lib\netstandard2.0\System.Data.SqlClient.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Data.SqlClient) != 1">
+      <ItemGroup>
+        <Reference Include="System.Data.SqlClient">
+          <HintPath>..\..\..\packages\local\System.Data.SqlClient\ref\netstandard2.0\System.Data.SqlClient.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Diagnostics.Debug) != 1">
+      <ItemGroup>
+        <Reference Include="System.Diagnostics.Debug">
+          <HintPath>..\..\..\packages\local\System.Diagnostics.Debug\ref\netstandard1.3\System.Diagnostics.Debug.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Diagnostics.DiagnosticSource) != 1">
+      <ItemGroup>
+        <Reference Include="System.Diagnostics.DiagnosticSource">
+          <HintPath>..\..\..\packages\local\System.Diagnostics.DiagnosticSource\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v5.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Diagnostics.DiagnosticSource) != 1">
+      <ItemGroup>
+        <Reference Include="System.Diagnostics.DiagnosticSource">
+          <HintPath>..\..\..\packages\local\System.Diagnostics.DiagnosticSource\lib\net5.0\System.Diagnostics.DiagnosticSource.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Diagnostics.DiagnosticSource) != 1">
+      <ItemGroup>
+        <Reference Include="System.Diagnostics.DiagnosticSource">
+          <HintPath>..\..\..\packages\local\System.Diagnostics.DiagnosticSource\lib\netstandard2.0\System.Diagnostics.DiagnosticSource.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Diagnostics.Tracing) != 1">
+      <ItemGroup>
+        <Reference Include="System.Diagnostics.Tracing">
+          <HintPath>..\..\..\packages\local\System.Diagnostics.Tracing\ref\netstandard1.5\System.Diagnostics.Tracing.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Drawing.Common) != 1">
+      <ItemGroup>
+        <Reference Include="System.Drawing.Common">
+          <HintPath>..\..\..\packages\local\System.Drawing.Common\lib\netcoreapp3.1\System.Drawing.Common.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Formats.Asn1) != 1">
+      <ItemGroup>
+        <Reference Include="System.Formats.Asn1">
+          <HintPath>..\..\..\packages\local\System.Formats.Asn1\lib\netstandard2.0\System.Formats.Asn1.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Globalization) != 1">
+      <ItemGroup>
+        <Reference Include="System.Globalization">
+          <HintPath>..\..\..\packages\local\System.Globalization\ref\netstandard1.3\System.Globalization.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.IO) != 1">
+      <ItemGroup>
+        <Reference Include="System.IO">
+          <HintPath>..\..\..\packages\local\System.IO\lib\net462\System.IO.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.IO) != 1">
+      <ItemGroup>
+        <Reference Include="System.IO">
+          <HintPath>..\..\..\packages\local\System.IO\ref\netstandard1.5\System.IO.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.IO.Compression) != 1">
+      <ItemGroup>
+        <Reference Include="System.IO.Compression">
+          <HintPath>..\..\..\packages\local\System.IO.Compression\ref\netstandard1.3\System.IO.Compression.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.IO.Compression.ZipFile) != 1">
+      <ItemGroup>
+        <Reference Include="System.IO.Compression.ZipFile">
+          <HintPath>..\..\..\packages\local\System.IO.Compression.ZipFile\lib\netstandard1.3\System.IO.Compression.ZipFile.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.IO.Compression.ZipFile) != 1">
+      <ItemGroup>
+        <Reference Include="System.IO.Compression.ZipFile">
+          <HintPath>..\..\..\packages\local\System.IO.Compression.ZipFile\ref\netstandard1.3\System.IO.Compression.ZipFile.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.IO.FileSystem) != 1">
+      <ItemGroup>
+        <Reference Include="System.IO.FileSystem">
+          <HintPath>..\..\..\packages\local\System.IO.FileSystem\ref\netstandard1.3\System.IO.FileSystem.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.IO.FileSystem.Primitives) != 1">
+      <ItemGroup>
+        <Reference Include="System.IO.FileSystem.Primitives">
+          <HintPath>..\..\..\packages\local\System.IO.FileSystem.Primitives\lib\netstandard1.3\System.IO.FileSystem.Primitives.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.IO.FileSystem.Primitives) != 1">
+      <ItemGroup>
+        <Reference Include="System.IO.FileSystem.Primitives">
+          <HintPath>..\..\..\packages\local\System.IO.FileSystem.Primitives\ref\netstandard1.3\System.IO.FileSystem.Primitives.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Linq) != 1">
+      <ItemGroup>
+        <Reference Include="System.Linq">
+          <HintPath>..\..\..\packages\local\System.Linq\lib\netstandard1.6\System.Linq.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Linq) != 1">
+      <ItemGroup>
+        <Reference Include="System.Linq">
+          <HintPath>..\..\..\packages\local\System.Linq\ref\netstandard1.6\System.Linq.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Memory) != 1">
+      <ItemGroup>
+        <Reference Include="System.Memory">
+          <HintPath>..\..\..\packages\local\System.Memory\lib\net461\System.Memory.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Memory) != 1">
+      <ItemGroup>
+        <Reference Include="System.Memory">
+          <HintPath>..\..\..\packages\local\System.Memory\lib\netstandard2.0\System.Memory.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Numerics) != 1">
+      <ItemGroup>
+        <Reference Include="System.Numerics">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="System.Numerics.Vectors">
+          <HintPath>..\..\..\packages\local\System.Numerics.Vectors\lib\net46\System.Numerics.Vectors.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Numerics.Vectors) != 1">
+      <ItemGroup>
+        <Reference Include="System.Numerics.Vectors">
+          <HintPath>..\..\..\packages\local\System.Numerics.Vectors\lib\netstandard2.0\System.Numerics.Vectors.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Numerics.Vectors) != 1">
+      <ItemGroup>
+        <Reference Include="System.Numerics.Vectors">
+          <HintPath>..\..\..\packages\local\System.Numerics.Vectors\ref\netstandard2.0\System.Numerics.Vectors.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Reflection) != 1">
+      <ItemGroup>
+        <Reference Include="System.Reflection">
+          <HintPath>..\..\..\packages\local\System.Reflection\ref\netstandard1.5\System.Reflection.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Reflection.Emit) != 1">
+      <ItemGroup>
+        <Reference Include="System.Reflection.Emit">
+          <HintPath>..\..\..\packages\local\System.Reflection.Emit\lib\netstandard2.0\System.Reflection.Emit.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Reflection.Emit) != 1">
+      <ItemGroup>
+        <Reference Include="System.Reflection.Emit">
+          <HintPath>..\..\..\packages\local\System.Reflection.Emit\ref\netstandard2.0\System.Reflection.Emit.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Reflection.Emit.ILGeneration) != 1">
+      <ItemGroup>
+        <Reference Include="System.Reflection.Emit.ILGeneration">
+          <HintPath>..\..\..\packages\local\System.Reflection.Emit.ILGeneration\lib\netstandard2.0\System.Reflection.Emit.ILGeneration.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Reflection.Emit.ILGeneration) != 1">
+      <ItemGroup>
+        <Reference Include="System.Reflection.Emit.ILGeneration">
+          <HintPath>..\..\..\packages\local\System.Reflection.Emit.ILGeneration\ref\netstandard2.0\System.Reflection.Emit.ILGeneration.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Reflection.Emit.Lightweight) != 1">
+      <ItemGroup>
+        <Reference Include="System.Reflection.Emit.Lightweight">
+          <HintPath>..\..\..\packages\local\System.Reflection.Emit.Lightweight\lib\netstandard2.0\System.Reflection.Emit.Lightweight.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Reflection.Emit.Lightweight) != 1">
+      <ItemGroup>
+        <Reference Include="System.Reflection.Emit.Lightweight">
+          <HintPath>..\..\..\packages\local\System.Reflection.Emit.Lightweight\ref\netstandard2.0\System.Reflection.Emit.Lightweight.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Reflection.Primitives) != 1">
+      <ItemGroup>
+        <Reference Include="System.Reflection.Primitives">
+          <HintPath>..\..\..\packages\local\System.Reflection.Primitives\ref\netstandard1.0\System.Reflection.Primitives.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Reflection.TypeExtensions) != 1">
+      <ItemGroup>
+        <Reference Include="System.Reflection.TypeExtensions">
+          <HintPath>..\..\..\packages\local\System.Reflection.TypeExtensions\lib\netstandard2.0\System.Reflection.TypeExtensions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Reflection.TypeExtensions) != 1">
+      <ItemGroup>
+        <Reference Include="System.Reflection.TypeExtensions">
+          <HintPath>..\..\..\packages\local\System.Reflection.TypeExtensions\ref\netstandard2.0\System.Reflection.TypeExtensions.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Resources.ResourceManager) != 1">
+      <ItemGroup>
+        <Reference Include="System.Resources.ResourceManager">
+          <HintPath>..\..\..\packages\local\System.Resources.ResourceManager\ref\netstandard1.0\System.Resources.ResourceManager.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.ComponentModel.Composition) != 1">
+      <ItemGroup>
+        <Reference Include="System.ComponentModel.Composition">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="System.Runtime">
+          <HintPath>..\..\..\packages\local\System.Runtime\lib\net462\System.Runtime.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Runtime) != 1">
+      <ItemGroup>
+        <Reference Include="System.Runtime">
+          <HintPath>..\..\..\packages\local\System.Runtime\ref\netstandard1.5\System.Runtime.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Runtime.CompilerServices.Unsafe) != 1">
+      <ItemGroup>
+        <Reference Include="System.Runtime.CompilerServices.Unsafe">
+          <HintPath>..\..\..\packages\local\System.Runtime.CompilerServices.Unsafe\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Runtime.CompilerServices.Unsafe) != 1">
+      <ItemGroup>
+        <Reference Include="System.Runtime.CompilerServices.Unsafe">
+          <HintPath>..\..\..\packages\local\System.Runtime.CompilerServices.Unsafe\lib\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Runtime.CompilerServices.Unsafe) != 1">
+      <ItemGroup>
+        <Reference Include="System.Runtime.CompilerServices.Unsafe">
+          <HintPath>..\..\..\packages\local\System.Runtime.CompilerServices.Unsafe\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Runtime.Extensions) != 1">
+      <ItemGroup>
+        <Reference Include="System.Runtime.Extensions">
+          <HintPath>..\..\..\packages\local\System.Runtime.Extensions\ref\netstandard1.5\System.Runtime.Extensions.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Runtime.Handles) != 1">
+      <ItemGroup>
+        <Reference Include="System.Runtime.Handles">
+          <HintPath>..\..\..\packages\local\System.Runtime.Handles\ref\netstandard1.3\System.Runtime.Handles.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Runtime.InteropServices) != 1">
+      <ItemGroup>
+        <Reference Include="System.Runtime.InteropServices">
+          <HintPath>..\..\..\packages\local\System.Runtime.InteropServices\ref\netcoreapp1.1\System.Runtime.InteropServices.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Runtime.InteropServices) != 1">
+      <ItemGroup>
+        <Reference Include="System.Runtime.InteropServices">
+          <HintPath>..\..\..\packages\local\System.Runtime.InteropServices\ref\netstandard1.5\System.Runtime.InteropServices.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.AccessControl) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.AccessControl">
+          <HintPath>..\..\..\packages\local\System.Security.AccessControl\lib\net461\System.Security.AccessControl.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.AccessControl) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.AccessControl">
+          <HintPath>..\..\..\packages\local\System.Security.AccessControl\lib\netstandard2.0\System.Security.AccessControl.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Cryptography.Cng) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Cryptography.Cng">
+          <HintPath>..\..\..\packages\local\System.Security.Cryptography.Cng\lib\netcoreapp3.0\System.Security.Cryptography.Cng.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Cryptography.Cng) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Cryptography.Cng">
+          <HintPath>..\..\..\packages\local\System.Security.Cryptography.Cng\ref\netcoreapp3.0\System.Security.Cryptography.Cng.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Cryptography.Cng) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Cryptography.Cng">
+          <HintPath>..\..\..\packages\local\System.Security.Cryptography.Cng\lib\netstandard2.0\System.Security.Cryptography.Cng.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Cryptography.Cng) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Cryptography.Cng">
+          <HintPath>..\..\..\packages\local\System.Security.Cryptography.Cng\ref\netstandard2.0\System.Security.Cryptography.Cng.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.1') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Cryptography.Cng) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Cryptography.Cng">
+          <HintPath>..\..\..\packages\local\System.Security.Cryptography.Cng\lib\netstandard2.1\System.Security.Cryptography.Cng.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.1') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Cryptography.Cng) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Cryptography.Cng">
+          <HintPath>..\..\..\packages\local\System.Security.Cryptography.Cng\ref\netstandard2.1\System.Security.Cryptography.Cng.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Cryptography.Pkcs) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Cryptography.Pkcs">
+          <HintPath>..\..\..\packages\local\System.Security.Cryptography.Pkcs\lib\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Cryptography.Pkcs) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Cryptography.Pkcs">
+          <HintPath>..\..\..\packages\local\System.Security.Cryptography.Pkcs\ref\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Cryptography.Pkcs) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Cryptography.Pkcs">
+          <HintPath>..\..\..\packages\local\System.Security.Cryptography.Pkcs\lib\netstandard2.0\System.Security.Cryptography.Pkcs.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Cryptography.Pkcs) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Cryptography.Pkcs">
+          <HintPath>..\..\..\packages\local\System.Security.Cryptography.Pkcs\ref\netstandard2.0\System.Security.Cryptography.Pkcs.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.1') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Cryptography.Pkcs) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Cryptography.Pkcs">
+          <HintPath>..\..\..\packages\local\System.Security.Cryptography.Pkcs\lib\netstandard2.1\System.Security.Cryptography.Pkcs.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.1') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Cryptography.Pkcs) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Cryptography.Pkcs">
+          <HintPath>..\..\..\packages\local\System.Security.Cryptography.Pkcs\ref\netstandard2.1\System.Security.Cryptography.Pkcs.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="System.Security.Cryptography.ProtectedData">
+          <HintPath>..\..\..\packages\local\System.Security.Cryptography.ProtectedData\lib\net461\System.Security.Cryptography.ProtectedData.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Cryptography.ProtectedData) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Cryptography.ProtectedData">
+          <HintPath>..\..\..\packages\local\System.Security.Cryptography.ProtectedData\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Data.OracleClient) != 1">
+      <ItemGroup>
+        <Reference Include="System.Data.OracleClient">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="System.ServiceProcess">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="System.Transactions">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="WindowsBase">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="System.Security.Permissions">
+          <HintPath>..\..\..\packages\local\System.Security.Permissions\lib\net461\System.Security.Permissions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v5.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Permissions) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Permissions">
+          <HintPath>..\..\..\packages\local\System.Security.Permissions\lib\net5.0\System.Security.Permissions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Permissions) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Permissions">
+          <HintPath>..\..\..\packages\local\System.Security.Permissions\lib\netcoreapp3.1\System.Security.Permissions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Permissions) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Permissions">
+          <HintPath>..\..\..\packages\local\System.Security.Permissions\lib\netstandard2.0\System.Security.Permissions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Principal.Windows) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Principal.Windows">
+          <HintPath>..\..\..\packages\local\System.Security.Principal.Windows\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Principal.Windows) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Principal.Windows">
+          <HintPath>..\..\..\packages\local\System.Security.Principal.Windows\ref\netcoreapp3.0\System.Security.Principal.Windows.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Principal.Windows) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Principal.Windows">
+          <HintPath>..\..\..\packages\local\System.Security.Principal.Windows\lib\netstandard2.0\System.Security.Principal.Windows.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Security.Principal.Windows) != 1">
+      <ItemGroup>
+        <Reference Include="System.Security.Principal.Windows">
+          <HintPath>..\..\..\packages\local\System.Security.Principal.Windows\ref\netstandard2.0\System.Security.Principal.Windows.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Text.Encoding) != 1">
+      <ItemGroup>
+        <Reference Include="System.Text.Encoding">
+          <HintPath>..\..\..\packages\local\System.Text.Encoding\ref\netstandard1.3\System.Text.Encoding.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Text.Encoding.CodePages) != 1">
+      <ItemGroup>
+        <Reference Include="System.Text.Encoding.CodePages">
+          <HintPath>..\..\..\packages\local\System.Text.Encoding.CodePages\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Text.Encoding.CodePages) != 1">
+      <ItemGroup>
+        <Reference Include="System.Text.Encoding.CodePages">
+          <HintPath>..\..\..\packages\local\System.Text.Encoding.CodePages\lib\netstandard2.0\System.Text.Encoding.CodePages.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Threading) != 1">
+      <ItemGroup>
+        <Reference Include="System.Threading">
+          <HintPath>..\..\..\packages\local\System.Threading\lib\netstandard1.3\System.Threading.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Threading) != 1">
+      <ItemGroup>
+        <Reference Include="System.Threading">
+          <HintPath>..\..\..\packages\local\System.Threading\ref\netstandard1.3\System.Threading.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Threading.Tasks) != 1">
+      <ItemGroup>
+        <Reference Include="System.Threading.Tasks">
+          <HintPath>..\..\..\packages\local\System.Threading.Tasks\ref\netstandard1.3\System.Threading.Tasks.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Threading.Tasks.Extensions) != 1">
+      <ItemGroup>
+        <Reference Include="System.Threading.Tasks.Extensions">
+          <HintPath>..\..\..\packages\local\System.Threading.Tasks.Extensions\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Threading.Tasks.Extensions) != 1">
+      <ItemGroup>
+        <Reference Include="System.Threading.Tasks.Extensions">
+          <HintPath>..\..\..\packages\local\System.Threading.Tasks.Extensions\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Threading.Timer) != 1">
+      <ItemGroup>
+        <Reference Include="System.Threading.Timer">
+          <HintPath>..\..\..\packages\local\System.Threading.Timer\ref\netstandard1.2\System.Threading.Timer.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.ValueTuple) != 1">
+      <ItemGroup>
+        <Reference Include="System.ValueTuple">
+          <HintPath>..\..\..\packages\local\System.ValueTuple\lib\net47\System.ValueTuple.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Windows.Extensions) != 1">
+      <ItemGroup>
+        <Reference Include="System.Windows.Extensions">
+          <HintPath>..\..\..\packages\local\System.Windows.Extensions\lib\netcoreapp3.1\System.Windows.Extensions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@UniversalExtensions) != 1">
+      <ItemGroup>
+        <Reference Include="UniversalExtensions">
+          <HintPath>..\..\..\packages\local\UniversalExtensions\lib\net472\UniversalExtensions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Utf8Json) != 1">
+      <ItemGroup>
+        <Reference Include="Utf8Json">
+          <HintPath>..\..\..\packages\local\Utf8Json\lib\net47\Utf8Json.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Utf8Json) != 1">
+      <ItemGroup>
+        <Reference Include="Utf8Json">
+          <HintPath>..\..\..\packages\local\Utf8Json\lib\netstandard2.0\Utf8Json.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) Or ($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@CommandLine) != 1">
+      <ItemGroup>
+        <Reference Include="CommandLine">
+          <HintPath>..\..\..\packages\CommandLine\lib\CommandLine.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@CsvHelper) != 1">
+      <ItemGroup>
+        <Reference Include="CsvHelper">
+          <HintPath>..\..\..\packages\CsvHelper.27.2.1\lib\net47\CsvHelper.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v5.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@CsvHelper) != 1">
+      <ItemGroup>
+        <Reference Include="CsvHelper">
+          <HintPath>..\..\..\packages\CsvHelper.27.2.1\lib\net5.0\CsvHelper.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@CsvHelper) != 1">
+      <ItemGroup>
+        <Reference Include="CsvHelper">
+          <HintPath>..\..\..\packages\CsvHelper.27.2.1\lib\netstandard2.0\CsvHelper.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@CsvHelper) != 1">
+      <ItemGroup>
+        <Reference Include="CsvHelper">
+          <HintPath>..\..\..\packages\CsvHelper.27.2.1\lib\netstandard2.1\CsvHelper.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.ComponentModel.DataAnnotations) != 1">
+      <ItemGroup>
+        <Reference Include="System.ComponentModel.DataAnnotations">
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="EntityFramework.Core">
+          <HintPath>..\..\..\packages\EntityFramework.Core\lib\net45\EntityFramework.Core.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@EntityFramework.Relational) != 1">
+      <ItemGroup>
+        <Reference Include="EntityFramework.Relational">
+          <HintPath>..\..\..\packages\EntityFramework.Relational\lib\net45\EntityFramework.Relational.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@EntityFramework.SqlServer) != 1">
+      <ItemGroup>
+        <Reference Include="EntityFramework.SqlServer">
+          <HintPath>..\..\..\packages\EntityFramework.SqlServer\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@FSharp.Data.SqlClient) != 1">
+      <ItemGroup>
+        <Reference Include="FSharp.Data.SqlClient">
+          <HintPath>..\..\..\packages\FSharp.Data.SqlClient\lib\net40\FSharp.Data.SqlClient.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@HtmlAgilityPack) != 1">
+      <ItemGroup>
+        <Reference Include="HtmlAgilityPack">
+          <HintPath>..\..\..\packages\HtmlAgilityPack\lib\Net45\HtmlAgilityPack.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@HtmlAgilityPack) != 1">
+      <ItemGroup>
+        <Reference Include="HtmlAgilityPack">
+          <HintPath>..\..\..\packages\HtmlAgilityPack\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Interactive.Async) != 1">
+      <ItemGroup>
+        <Reference Include="System.Interactive.Async">
+          <HintPath>..\..\..\packages\Ix-Async\lib\net45\System.Interactive.Async.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Bcl.AsyncInterfaces) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+          <HintPath>..\..\..\packages\Microsoft.Bcl.AsyncInterfaces\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Bcl.AsyncInterfaces) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+          <HintPath>..\..\..\packages\Microsoft.Bcl.AsyncInterfaces\lib\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Bcl.AsyncInterfaces) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+          <HintPath>..\..\..\packages\Microsoft.Bcl.AsyncInterfaces\lib\netstandard2.1\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Bcl.HashCode) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Bcl.HashCode">
+          <HintPath>..\..\..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Bcl.HashCode) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Bcl.HashCode">
+          <HintPath>..\..\..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\netstandard2.0\Microsoft.Bcl.HashCode.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v2.0') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Bcl.HashCode) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Bcl.HashCode">
+          <HintPath>..\..\..\packages\Microsoft.Bcl.HashCode.1.1.1\ref\netstandard2.0\Microsoft.Bcl.HashCode.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Framework.Caching.Abstractions) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Framework.Caching.Abstractions">
+          <HintPath>..\..\..\packages\Microsoft.Framework.Caching.Abstractions\lib\net45\Microsoft.Framework.Caching.Abstractions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Framework.Caching.Memory) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Framework.Caching.Memory">
+          <HintPath>..\..\..\packages\Microsoft.Framework.Caching.Memory\lib\net45\Microsoft.Framework.Caching.Memory.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Framework.Configuration) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Framework.Configuration">
+          <HintPath>..\..\..\packages\Microsoft.Framework.Configuration\lib\net45\Microsoft.Framework.Configuration.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Framework.Configuration.Abstractions) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Framework.Configuration.Abstractions">
+          <HintPath>..\..\..\packages\Microsoft.Framework.Configuration.Abstractions\lib\net45\Microsoft.Framework.Configuration.Abstractions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Framework.Configuration.Binder) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Framework.Configuration.Binder">
+          <HintPath>..\..\..\packages\Microsoft.Framework.Configuration.Binder\lib\net45\Microsoft.Framework.Configuration.Binder.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Framework.DependencyInjection) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Framework.DependencyInjection">
+          <HintPath>..\..\..\packages\Microsoft.Framework.DependencyInjection\lib\net45\Microsoft.Framework.DependencyInjection.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Framework.DependencyInjection.Abstractions) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Framework.DependencyInjection.Abstractions">
+          <HintPath>..\..\..\packages\Microsoft.Framework.DependencyInjection.Abstractions\lib\net45\Microsoft.Framework.DependencyInjection.Abstractions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Framework.Logging) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Framework.Logging">
+          <HintPath>..\..\..\packages\Microsoft.Framework.Logging\lib\net45\Microsoft.Framework.Logging.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Framework.Logging.Abstractions) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Framework.Logging.Abstractions">
+          <HintPath>..\..\..\packages\Microsoft.Framework.Logging.Abstractions\lib\net45\Microsoft.Framework.Logging.Abstractions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Framework.OptionsModel) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Framework.OptionsModel">
+          <HintPath>..\..\..\packages\Microsoft.Framework.OptionsModel\lib\net45\Microsoft.Framework.OptionsModel.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Microsoft.Framework.Primitives) != 1">
+      <ItemGroup>
+        <Reference Include="Microsoft.Framework.Primitives">
+          <HintPath>..\..\..\packages\Microsoft.Framework.Primitives\lib\net45\Microsoft.Framework.Primitives.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') Or ($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@NStack) != 1">
+      <ItemGroup>
+        <Reference Include="NStack">
+          <HintPath>..\..\..\packages\NStack.Core\lib\netstandard2.0\NStack.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@Remotion.Linq) != 1">
+      <ItemGroup>
+        <Reference Include="Remotion.Linq">
+          <HintPath>..\..\..\packages\Remotion.Linq\lib\net45\Remotion.Linq.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.CodeDom) != 1">
+      <ItemGroup>
+        <Reference Include="System.CodeDom">
+          <HintPath>..\..\..\packages\System.CodeDom\lib\net461\System.CodeDom.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.CodeDom) != 1">
+      <ItemGroup>
+        <Reference Include="System.CodeDom">
+          <HintPath>..\..\..\packages\System.CodeDom\lib\netstandard2.0\System.CodeDom.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Collections.Immutable) != 1">
+      <ItemGroup>
+        <Reference Include="System.Collections.Immutable">
+          <HintPath>..\..\..\packages\System.Collections.Immutable\lib\net461\System.Collections.Immutable.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Collections.Immutable) != 1">
+      <ItemGroup>
+        <Reference Include="System.Collections.Immutable">
+          <HintPath>..\..\..\packages\System.Collections.Immutable\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Data.Common) != 1">
+      <ItemGroup>
+        <Reference Include="System.Data.Common">
+          <HintPath>..\..\..\packages\System.Data.Common\lib\net451\System.Data.Common.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Data.Common) != 1">
+      <ItemGroup>
+        <Reference Include="System.Data.Common">
+          <HintPath>..\..\..\packages\System.Data.Common\lib\netstandard1.2\System.Data.Common.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Data.Common) != 1">
+      <ItemGroup>
+        <Reference Include="System.Data.Common">
+          <HintPath>..\..\..\packages\System.Data.Common\ref\netstandard1.2\System.Data.Common.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.2') Or ($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Data.OracleClient) != 1">
+      <ItemGroup>
+        <Reference Include="System.Data.OracleClient">
+          <HintPath>..\..\..\packages\System.Data.OracleClient\lib\netstandard2.0\System.Data.OracleClient.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Text.Encodings.Web) != 1">
+      <ItemGroup>
+        <Reference Include="System.Text.Encodings.Web">
+          <HintPath>..\..\..\packages\System.Text.Encodings.Web\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Text.Encodings.Web) != 1">
+      <ItemGroup>
+        <Reference Include="System.Text.Encodings.Web">
+          <HintPath>..\..\..\packages\System.Text.Encodings.Web\lib\netcoreapp3.1\System.Text.Encodings.Web.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Text.Encodings.Web) != 1">
+      <ItemGroup>
+        <Reference Include="System.Text.Encodings.Web">
+          <HintPath>..\..\..\packages\System.Text.Encodings.Web\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Text.Json) != 1">
+      <ItemGroup>
+        <Reference Include="System.Text.Json">
+          <HintPath>..\..\..\packages\System.Text.Json\lib\net461\System.Text.Json.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Text.Json) != 1">
+      <ItemGroup>
+        <Reference Include="System.Text.Json">
+          <HintPath>..\..\..\packages\System.Text.Json\lib\netcoreapp3.1\System.Text.Json.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Text.Json) != 1">
+      <ItemGroup>
+        <Reference Include="System.Text.Json">
+          <HintPath>..\..\..\packages\System.Text.Json\lib\netstandard2.0\System.Text.Json.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="..\..\..\packages\local\EntityFramework\build\EntityFramework.targets" Condition="Exists('..\..\..\packages\local\EntityFramework\build\EntityFramework.targets')" Label="Paket" />
+  <Import Project="..\..\..\packages\local\EntityFramework\build\$(__paket__EntityFramework_targets).targets" Condition="Exists('..\..\..\packages\local\EntityFramework\build\$(__paket__EntityFramework_targets).targets')" Label="Paket" />
+  <Import Project="..\..\..\packages\local\NETStandard.Library\build\$(__paket__NETStandard_Library_targets).targets" Condition="Exists('..\..\..\packages\local\NETStandard.Library\build\$(__paket__NETStandard_Library_targets).targets')" Label="Paket" />
+  <Import Project="..\..\..\packages\System.Text.Json\build\System.Text.Json.targets" Condition="Exists('..\..\..\packages\System.Text.Json\build\System.Text.Json.targets')" Label="Paket" />
+  <ItemGroup>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn3.11\cs\System.Text.Json.SourceGeneration.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn3.11\cs\cs\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn3.11\cs\de\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn3.11\cs\es\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn3.11\cs\fr\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn3.11\cs\it\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn3.11\cs\ja\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn3.11\cs\ko\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn3.11\cs\pl\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn3.11\cs\pt-BR\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn3.11\cs\ru\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn3.11\cs\tr\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn3.11\cs\zh-Hans\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn3.11\cs\zh-Hant\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn4.0\cs\System.Text.Json.SourceGeneration.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn4.0\cs\cs\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn4.0\cs\de\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn4.0\cs\es\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn4.0\cs\fr\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn4.0\cs\it\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn4.0\cs\ja\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn4.0\cs\ko\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn4.0\cs\pl\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn4.0\cs\pt-BR\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn4.0\cs\ru\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn4.0\cs\tr\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn4.0\cs\zh-Hans\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\..\packages\System.Text.Json\analyzers\dotnet\roslyn4.0\cs\zh-Hant\System.Text.Json.SourceGeneration.resources.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+  </ItemGroup>
+  <Choose>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And ($(TargetFrameworkVersion) == 'v3.1' Or $(TargetFrameworkVersion) == 'v5.0')) Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Text.RegularExpressions) != 1">
+      <ItemGroup>
+        <Reference Include="System.Text.RegularExpressions">
+          <HintPath>..\..\..\packages\System.Text.RegularExpressions\lib\netstandard1.6\System.Text.RegularExpressions.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+    <When Condition="(($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v3.1') Or ($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1'))) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Text.RegularExpressions) != 1">
+      <ItemGroup>
+        <Reference Include="System.Text.RegularExpressions">
+          <HintPath>..\..\..\packages\System.Text.RegularExpressions\ref\netstandard1.6\System.Text.RegularExpressions.dll</HintPath>
+          <Private>False</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
 </Project>

@@ -16,7 +16,7 @@ namespace Example
             var ahk = AutoHotkeyEngine.Instance;
 
             //execute any raw ahk code
-            ahk.ExecRaw("MsgBox, Hello World!");
+            //ahk.ExecRaw("MsgBox, Hello World!");
 
             //create new hotkeys
             ahk.ExecRaw("^a::Send, Hello World");
