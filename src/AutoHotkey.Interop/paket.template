@@ -1,0 +1,5 @@
+type project
+licenseExpression MIT
+id AutoHotkey.Interop
+authors Programmers
+description AutoHotkey.Interop

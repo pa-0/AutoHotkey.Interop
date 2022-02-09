@@ -82,6 +82,8 @@
   <ItemGroup>
     <EmbeddedResource Include="x64\v2_AutoHotkey.dll" />
     <EmbeddedResource Include="Pipes\pipeclient.ahk" />
+    <None Include="paket.references" />
+    <None Include="paket.template" />
     <None Include="x86\v2_AutoHotkey.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
