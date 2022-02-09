@@ -1,0 +1,14 @@
+NStack.Core
+EntityFramework
+CommandLine
+FSharp.Data.SqlClient
+EntityFramework.SqlServer
+CsvHelper
+HtmlAgilityPack
+System.Data.OracleClient
+System.Text.Json
+group Local
+Cricket.Intranet.FSharp
+FSConsole
+GalaxyMenu
+Microsoft.AspNet.TelemetryCorrelation
