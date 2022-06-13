@@ -97,4 +97,15 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@LumenWorks.Framework.IO) != 1">
+      <ItemGroup>
+        <Reference Include="LumenWorks.Framework.IO">
+          <HintPath>..\..\..\packages\CSVReader\lib\net40\LumenWorks.Framework.IO.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
 </Project>
