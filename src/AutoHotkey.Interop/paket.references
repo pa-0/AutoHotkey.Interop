@@ -1,4 +1,7 @@
 Microsoft.Net.Compilers
+System.Formats.Asn1
+group Local
+Configurator
 group Local2
 AutoHotkey.Interop
 BootstrapTable
