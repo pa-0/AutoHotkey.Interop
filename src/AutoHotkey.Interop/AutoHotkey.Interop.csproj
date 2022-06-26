@@ -99,6 +99,77 @@
   </Target>
   -->
   <Choose>
+    <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.2')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@HigLabo.Data) != 1">
+      <ItemGroup>
+        <Reference Include="HigLabo.Data">
+          <HintPath>..\..\..\packages\HigLabo\lib\net40\HigLabo.Data.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="HigLabo.Mail">
+          <HintPath>..\..\..\packages\HigLabo\lib\net40\HigLabo.Mail.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="HigLabo.Net">
+          <HintPath>..\..\..\packages\HigLabo\lib\net40\HigLabo.Net.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="HigLabo.Net.BoxNet">
+          <HintPath>..\..\..\packages\HigLabo\lib\net40\HigLabo.Net.BoxNet.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="HigLabo.Net.Dropbox">
+          <HintPath>..\..\..\packages\HigLabo\lib\net40\HigLabo.Net.Dropbox.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="HigLabo.Net.Facebook">
+          <HintPath>..\..\..\packages\HigLabo\lib\net40\HigLabo.Net.Facebook.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="HigLabo.Net.Ftp">
+          <HintPath>..\..\..\packages\HigLabo\lib\net40\HigLabo.Net.Ftp.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="HigLabo.Net.Rss">
+          <HintPath>..\..\..\packages\HigLabo\lib\net40\HigLabo.Net.Rss.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="HigLabo.Net.SugarSync">
+          <HintPath>..\..\..\packages\HigLabo\lib\net40\HigLabo.Net.SugarSync.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="HigLabo.Net.Twitter">
+          <HintPath>..\..\..\packages\HigLabo\lib\net40\HigLabo.Net.Twitter.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="HigLabo.Net.WindowsLive">
+          <HintPath>..\..\..\packages\HigLabo\lib\net40\HigLabo.Net.WindowsLive.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="HigLabo.WindowsAzure.RestService">
+          <HintPath>..\..\..\packages\HigLabo\lib\net40\HigLabo.WindowsAzure.RestService.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+        <Reference Include="Newtonsoft.Json">
+          <HintPath>..\..\..\packages\HigLabo\lib\net40\Newtonsoft.Json.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
     <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And ($(TargetFrameworkVersion) == 'v2.0' Or $(TargetFrameworkVersion) == 'v2.1')) And $(registry:HKEY_CURRENT_USER\Software\WCRI\AutoHotkey.Interop@System.Buffers) != 1">
       <ItemGroup>
         <Reference Include="System.Buffers">
