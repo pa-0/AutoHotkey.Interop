@@ -2,3 +2,11 @@ Microsoft.Net.Compilers
 System.Formats.Asn1
 Microsoft.AspNet.SignalR.Client
 System.Text.Encoding.CodePages
+System.Runtime.InteropServices
+System.Runtime.InteropServices.RuntimeInformation
+System.Security.Cryptography.Algorithms
+System.Security.Cryptography.Encoding
+System.Security.Cryptography.Primitives
+System.Security.Cryptography.X509Certificates
+System.Text.RegularExpressions
+System.Xml.ReaderWriter
