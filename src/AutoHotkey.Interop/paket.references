@@ -10,3 +10,6 @@ System.Security.Cryptography.Primitives
 System.Security.Cryptography.X509Certificates
 System.Text.RegularExpressions
 System.Xml.ReaderWriter
+Microsoft.CodeAnalysis.Analyzers
+Microsoft.NETCore.Platforms
+System.AppContext
